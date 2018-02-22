@@ -1,0 +1,15 @@
+.blinking {
+    animation: blink 0.8s ease-in-out infinite forwards;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

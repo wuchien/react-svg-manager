@@ -1,0 +1,13 @@
+.path {
+    animation: dash 0.8s linear forwards;
+}
+
+.path2 {
+    animation: dash 0.8s 0.3s linear forwards;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
