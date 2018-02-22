@@ -30,7 +30,7 @@ const SvgManager = (svgBlueprint, rootConfig) => {
       svgShouldFill = false,
       svgAnimeType = "dash",
       svgStrokeWidth = rootStrokeWidth,
-      svgTotalLength = 260,
+      svgTotalLength = "L300",
       svgDefaultStrokeColor = rootDefaultStrokeColor,
       svgAnimatingStrokeColor = rootAnimatingStrokeColor,
       svgFulfilledStrokeColor = rootFulfilledStrokeColor,
@@ -49,20 +49,20 @@ const SvgManager = (svgBlueprint, rootConfig) => {
       animeArr.push(value);
     });
 
-    const shouldDrawPath = ({
-      name,
-      isAnimating,
-      fulfilled,
-      rejected,
-      pathShouldFill = svgShouldFill,
-      pathAnimeType = svgAnimeType,
-      pathStrokeWidth = svgStrokeWidth,
-      pathTotalLength = svgTotalLength,
-      pathDefaultStrokeColor = svgDefaultStrokeColor,
-      pathAnimatingStrokeColor = svgAnimatingStrokeColor,
-      pathFulfilledStrokeColor = svgFulfilledStrokeColor,
-      pathRejectedStrokeColor = svgRejectedStrokeColor
-    }) => {
+    const shouldDrawPath = ({ name, isAnimating, fulfilled, rejected }) => {
+      pathShouldFill = paths[name].pathShouldFill || svgShouldFill;
+      pathAnimeType = paths[name].pathAnimeType || svgAnimeType;
+      pathStrokeWidth = paths[name].pathStrokeWidth || svgStrokeWidth;
+      pathTotalLength = paths[name].pathTotalLength || svgTotalLength;
+      pathDefaultStrokeColor =
+        paths[name].pathDefaultStrokeColor || svgDefaultStrokeColor;
+      pathAnimatingStrokeColor =
+        paths[name].pathAnimatingStrokeColor || svgAnimatingStrokeColor;
+      pathFulfilledStrokeColor =
+        paths[name].pathFulfilledStrokeColor || svgFulfilledStrokeColor;
+      pathRejectedStrokeColor =
+        paths[name].pathRejectedStrokeColor || svgRejectedStrokeColor;
+
       if (isAnimating) {
         if (pathShouldFill) {
           return (

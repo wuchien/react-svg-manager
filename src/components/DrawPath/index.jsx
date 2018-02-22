@@ -17,29 +17,21 @@ const DrawPath = ({ setting }) => {
   return (
     <g>
       <path
-        className={styles.path}
+        className={styles[`path_${totalLength}`]}
         fill={shouldFill ? stroke : "transparent"}
         stroke={stroke}
         strokeWidth={strokeWidth}
         strokeMiterlimit="10"
         d={d}
-        style={{
-          strokeDashoffset: totalLength,
-          strokeDasharray: totalLength + " " + totalLength
-        }}
       />
       {type === "dash"
         ? <path
-            className={styles.path2}
+            className={styles[`path2_${totalLength}`]}
             fill={shouldFill ? stroke2 : "transparent"}
             stroke={stroke2}
             strokeWidth={strokeWidth}
             strokeMiterlimit="10"
             d={d}
-            style={{
-              strokeDashoffset: totalLength,
-              strokeDasharray: totalLength + " " + totalLength
-            }}
           />
         : null}
     </g>
